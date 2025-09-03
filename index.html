@@ -4,59 +4,127 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Supresaa - Meu Amor por Você</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-    body { font-family: 'Montserrat', sans-serif; margin:0; padding:0; text-align:center; background: linear-gradient(120deg, #ff9a9e, #fad0c4); overflow-x:hidden; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+      color: #fff;
+      overflow-x: hidden;
+    }
 
-    h1, h2, h3 { color: #fff; text-shadow: 1px 1px 3px #d6336c; }
-    .mensagem { font-size: 1.5rem; margin: 20px 0; }
+    h1 {
+      font-size: 2.5rem;
+      margin: 20px 0;
+      text-shadow: 2px 2px 5px #d6336c;
+    }
+
+    .mensagem {
+      font-size: 1.5rem;
+      margin: 10px 0 30px;
+      text-shadow: 1px 1px 3px #d6336c;
+    }
 
     /* Contadores */
-    .contador-container { display:flex; justify-content:center; gap:40px; flex-wrap:wrap; margin:30px 0; }
-    .contador { background: rgba(255, 255, 255, 0.2); padding:20px 30px; border-radius:25px; min-width:220px; box-shadow:0 8px 15px rgba(0,0,0,0.2); }
-    .contador h2 { font-size:1.4rem; margin-bottom:15px; }
-    .contador p { font-size:1.1rem; margin:5px 0; }
+    .contador-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .contador {
+      background: rgba(255,255,255,0.2);
+      padding: 25px 35px;
+      border-radius: 25px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      min-width: 200px;
+      transition: transform 0.3s;
+    }
+
+    .contador:hover { transform: scale(1.05); }
+
+    .contador h2 { font-size: 1.5rem; margin-bottom: 15px; }
+    .contador p { font-size: 1.2rem; margin: 5px 0; }
 
     /* Cartão interativo */
-    .cartao { width:250px; height:150px; background: rgba(255,255,255,0.2); border-radius:20px; margin:20px auto; cursor:pointer; perspective:1000px; }
-    .cartao-inner { position:relative; width:100%; height:100%; text-align:center; transition:transform 0.8s; transform-style: preserve-3d; }
-    .cartao:hover .cartao-inner { transform:rotateY(180deg); }
-    .cartao-front, .cartao-back { position:absolute; width:100%; height:100%; backface-visibility:hidden; border-radius:20px; display:flex; justify-content:center; align-items:center; font-size:1.2rem; padding:10px; }
-    .cartao-front { background: rgba(255,255,255,0.2); }
-    .cartao-back { background: rgba(255,255,255,0.4); transform:rotateY(180deg); }
+    .cartao { width: 270px; height: 160px; margin: 20px auto; perspective: 1000px; cursor: pointer; }
+    .cartao-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d; }
+    .cartao:hover .cartao-inner { transform: rotateY(180deg); }
+    .cartao-front, .cartao-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+      padding: 10px;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+      transition: background 0.3s;
+    }
+    .cartao-front { background: rgba(255,255,255,0.25); }
+    .cartao-back { background: rgba(255,255,255,0.35); transform: rotateY(180deg); }
 
     /* Mini-caixinha surpresa */
-    .caixinha { width:120px; height:120px; background: rgba(255,255,255,0.2); border-radius:15px; display:flex; justify-content:center; align-items:center; cursor:pointer; margin:20px auto; position:relative; transition: transform 0.3s; }
-    .caixinha:hover { transform:scale(1.1); }
-    .caixinha .surpresa { display:none; position:absolute; top:-50px; width:220px; background: rgba(255,255,255,0.3); border-radius:15px; padding:10px; }
+    .caixinha {
+      width: 130px;
+      height: 130px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      margin: 20px auto;
+      position: relative;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s, background 0.3s;
+    }
+    .caixinha:hover { transform: scale(1.1); background: rgba(255,255,255,0.35); }
+    .caixinha .surpresa {
+      display: none;
+      position: absolute;
+      top: -60px;
+      width: 220px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 15px;
+      padding: 10px;
+      font-weight: bold;
+    }
 
     /* Galeria */
-    .galeria { display:flex; justify-content:center; flex-wrap:wrap; gap:15px; margin:20px 0; }
-    .galeria img { width:120px; border-radius:15px; cursor:pointer; transition: transform 0.3s; }
-    .galeria img:hover { transform:scale(1.1); }
+    .galeria { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin: 30px 0; }
+    .galeria img { width: 130px; border-radius: 15px; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; }
+    .galeria img:hover { transform: scale(1.1); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
 
     /* Modal */
-    .modal { display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background: rgba(0,0,0,0.8); justify-content:center; align-items:center; }
-    .modal img { max-width:90%; max-height:90%; border-radius:20px; }
+    .modal { display: none; position: fixed; z-index: 1000; left:0; top:0; width:100%; height:100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; }
+    .modal img { max-width: 90%; max-height: 90%; border-radius: 20px; }
 
     /* Spotify player */
-    .spotify-player { margin:20px auto; }
-    .spotify-player iframe { border-radius:5px; }
+    .spotify-player { margin: 30px auto; }
+    .spotify-player iframe { border-radius: 8px; }
 
     /* Vídeo */
-    .video-container { margin:20px auto; }
-    .video-container iframe { width:100%; max-width:560px; height:315px; border:none; border-radius:10px; }
+    .video-container { margin: 30px auto; }
+    .video-container iframe { width:100%; max-width:560px; height:315px; border-radius:10px; }
 
-    /* Corações flutuantes */
-    .heart { position:absolute; width:20px; height:20px; background-color:#ff4d6d; transform:rotate(45deg); animation:float 6s linear infinite; opacity:0.8; }
-    .heart::before, .heart::after { content:''; position:absolute; width:20px; height:20px; background-color:#ff4d6d; border-radius:50%; }
+    /* Corações e confetes */
+    .heart { position: absolute; width: 20px; height: 20px; background-color: #ff4d6d; transform: rotate(45deg); animation: float 6s linear infinite; opacity: 0.8; }
+    .heart::before, .heart::after { content: ''; position: absolute; width: 20px; height: 20px; background-color: #ff4d6d; border-radius:50%; }
     .heart::before { top:-10px; left:0; }
     .heart::after { left:10px; top:0; }
     @keyframes float { 0%{transform:translateY(0) rotate(45deg);opacity:0.8;}50%{opacity:0.4;}100%{transform:translateY(-800px) rotate(45deg);opacity:0;} }
 
-    /* Confete */
-    .confete { position:absolute; width:10px; height:10px; background-color:#fff; opacity:0.8; animation: confete-fall linear infinite; border-radius:50%; }
-    @keyframes confete-fall { 0%{transform:translateY(-10px) rotate(0deg);}100%{transform:translateY(100vh) rotate(360deg);} }
+    .confete { position:absolute; width:10px; height:10px; border-radius:50%; animation: confete-fall linear infinite; }
+    @keyframes confete-fall {0%{transform:translateY(-10px) rotate(0deg);}100%{transform:translateY(100vh) rotate(360deg);}}
   </style>
 </head>
 <body>
@@ -96,10 +164,9 @@
   <img src="https://raw.githubusercontent.com/danielsrm61/Supresaa/refs/heads/main/IMG-20250613-WA0046.jpg" onclick="abrirModal(this)">
   <img src="https://raw.githubusercontent.com/danielsrm61/Supresaa/refs/heads/main/IMG-20250613-WA0003.jpg" onclick="abrirModal(this)">
 </div>
-
 <div class="modal" onclick="fecharModal()"><img id="modalImg"></div>
 
-<!-- Player do Spotify -->
+<!-- Spotify -->
 <div class="spotify-player">
   <iframe src="https://open.spotify.com/embed/track/2xOa2qPj8kDnlj8Nr1D07s" width="300" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 </div>
@@ -112,52 +179,3 @@
 <script>
   // Contadores
   function atualizarContador(id, dataInicio) {
-    const now = new Date();
-    const diff = now - new Date(dataInicio);
-    const dias = Math.floor(diff / (1000*60*60*24));
-    document.getElementById(id).innerText = dias + " dias";
-  }
-  atualizarContador('beijo','2025-05-03');
-  atualizarContador('namoro','2025-06-12');
-
-  // Mini-caixinha
-  function mostrarSurpresa(el) {
-    const surpresa = el.querySelector('.surpresa');
-    surpresa.style.display = surpresa.style.display === 'block' ? 'none' : 'block';
-  }
-
-  // Modal da galeria
-  function abrirModal(img) {
-    document.getElementById('modalImg').src = img.src;
-    document.querySelector('.modal').style.display = 'flex';
-  }
-  function fecharModal() {
-    document.querySelector('.modal').style.display = 'none';
-  }
-
-  // Corações flutuantes
-  for(let i=0;i<20;i++){
-    const heart = document.createElement('div');
-    heart.className='heart';
-    heart.style.left=Math.random()*100+'%';
-    heart.style.animationDuration=(3+Math.random()*3)+'s';
-    heart.style.width=(10+Math.random()*20)+'px';
-    heart.style.height=heart.style.width;
-    document.body.appendChild(heart);
-  }
-
-  // Confetes
-  for(let i=0;i<50;i++){
-    const conf = document.createElement('div');
-    conf.className='confete';
-    conf.style.left=Math.random()*100+'%';
-    conf.style.backgroundColor='hsl('+Math.random()*360+',80%,60%)';
-    conf.style.animationDuration=(2+Math.random()*3)+'s';
-    conf.style.width=(5+Math.random()*5)+'px';
-    conf.style.height=conf.style.width;
-    document.body.appendChild(conf);
-  }
-</script>
-
-</body>
-</html>
