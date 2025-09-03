@@ -66,9 +66,8 @@
     .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; }
     .modal img { max-width: 90%; max-height: 90%; border-radius: 20px; }
 
-    /* Botão música */
-    .musica { margin: 20px; padding: 10px 20px; background: rgba(255,255,255,0.2); border: none; border-radius: 15px; color: #fff; cursor: pointer; font-size: 1rem; transition: transform 0.3s; }
-    .musica:hover { transform: scale(1.1); }
+    /* Spotify player centralizado */
+    .spotify-player { margin: 20px; }
   </style>
 </head>
 <body>
@@ -118,9 +117,10 @@
     <img id="modal-img" src="">
   </div>
 
-  <!-- Música -->
-  <audio id="musica" src="https://raw.githubusercontent.com/danielsrm61/Supresaa/main/musica.mp3" preload="auto"></audio>
-  <button class="musica" onclick="toggleMusica()">🎵 Tocar / Pausar Música</button>
+  <!-- Spotify Player -->
+  <div class="spotify-player">
+    <iframe src="https://open.spotify.com/embed/track/2xOa2qPj8kDnlj8Nr1D07s?utm_source=oembed" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+  </div>
 
   <div class="mensagem">Cada momento com você é mágico ✨💖</div>
   <footer>Feito com ❤️ por Daniel</footer>
@@ -195,10 +195,6 @@
     });
     modal.onclick = ()=>{ modal.style.display='none'; }
 
-    // Música
-    const audio = document.getElementById('musica');
-    function toggleMusica() { if(audio.paused){ audio.play(); } else { audio.pause(); } }
-
     // Som opcional ao abrir cartão ou caixinha
     function tocarSom() {
       const som = new Audio('https://www.soundjay.com/button/beep-07.wav');
@@ -206,4 +202,4 @@
     }
   </script>
 </body>
-</html￼Enter
+</html>
