@@ -24,13 +24,13 @@
 
     h1 { font-size: 3rem; margin-top: 20px; text-shadow: 2px 2px 5px #d6336c; }
 
+    .mensagem { font-size:1rem; margin:10px 20px 20px 20px; text-shadow:1px 1px 3px #d6336c; }
+
     .contador-container { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin: 30px 0; }
     .contador { background: rgba(255, 255, 255, 0.2); padding: 20px 30px; border-radius: 25px; box-shadow: 0 8px 15px rgba(0,0,0,0.2); min-width: 220px; transition: transform 0.3s; cursor: default; }
     .contador:hover { transform: scale(1.05); }
     .contador h2 { font-size: 1.4rem; margin-bottom: 15px; text-shadow: 1px 1px 3px #d6336c; }
     .contador p { font-size: 1.1rem; margin: 5px 0; }
-
-    .mensagem { font-size: 1.2rem; margin: 15px 0; text-shadow: 1px 1px 4px #d6336c; }
 
     footer { margin-top: 30px; font-size: 0.9rem; opacity: 0.8; }
 
@@ -46,8 +46,8 @@
     @keyframes confete-fall { 0% { transform: translateY(-10px) rotate(0deg); } 100% { transform: translateY(100vh) rotate(360deg); } }
 
     /* Cartão interativo */
-    .cartao { width: 250px; height: 150px; background: rgba(255,255,255,0.2); border-radius: 20px; margin: 20px; cursor: pointer; perspective: 1000px; }
-    .cartao-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s; transform-style: preserve-3d; }
+    .cartao { width: 250px; height: 150px; margin: 20px; cursor: pointer; perspective: 1000px; }
+    .cartao-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s; transform-style: preserve-3d; border-radius: 20px; }
     .cartao:hover .cartao-inner { transform: rotateY(180deg); }
     .cartao-front, .cartao-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; display: flex; justify-content: center; align-items: center; font-size: 1.2rem; padding: 10px; }
     .cartao-front { background: rgba(255,255,255,0.2); }
@@ -56,7 +56,7 @@
     /* Mini-caixinha surpresa */
     .caixinha { width: 120px; height: 120px; background: rgba(255,255,255,0.2); border-radius: 15px; display: flex; justify-content: center; align-items: center; cursor: pointer; margin: 20px; position: relative; transition: transform 0.3s; }
     .caixinha:hover { transform: scale(1.1); }
-    .caixinha .surpresa { display: none; position: absolute; top: -50px; width: 200px; background: rgba(255,255,255,0.3); border-radius: 15px; padding: 10px; }
+    .caixinha .surpresa { display: none; position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 200px; background: rgba(255,255,255,0.3); border-radius: 15px; padding: 10px; font-size:0.9rem; }
 
     /* Galeria */
     .galeria { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin: 20px 0; }
@@ -78,8 +78,10 @@
 <body>
   <h1>🌹 Nosso Amor Animado 💖</h1>
 
-  <!-- Texto adicional menor -->
-  <div class="mensagem">Cada momento com você é mágico ✨💖</div>
+  <!-- Texto romântico menor abaixo do título -->
+  <div class="mensagem">
+    Amor, cada dia que passa encontro novas formas de te mostrar o quanto te amo. Meu amor por você não tem limites, e cada momento ao seu lado é um universo de carinho e felicidade. Que nossos dias sejam sempre cheios de descobertas, risadas e lembranças que guardaremos para sempre no coração.
+  </div>
 
   <!-- Contadores -->
   <div class="contador-container">
