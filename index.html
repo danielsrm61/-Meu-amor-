@@ -44,6 +44,7 @@
       box-shadow: 0 8px 15px rgba(0,0,0,0.2);
       min-width: 220px;
       transition: transform 0.3s;
+      cursor: default;
     }
 
     .contador:hover { transform: scale(1.05); }
@@ -148,7 +149,7 @@
   </div>
 
   <!-- Cartão interativo -->
-  <div class="cartao">
+  <div class="cartao" onclick="tocarSom()">
     <div class="cartao-inner">
       <div class="cartao-front">Clique para abrir 💌</div>
       <div class="cartao-back">Te amo muito! 💖🌹</div>
@@ -173,8 +174,9 @@
     <img id="modal-img" src="">
   </div>
 
-  <!-- Botão de música -->
-  <button class="musica" onclick="tocarMusica()">🎵 Tocar Música</button>
+  <!-- Música -->
+  <audio id="musica" src="https://drive.google.com/uc?export=download&id=1-8pSisP9rGW7KYl8aHbdgttU2He8bbX4" preload="auto"></audio>
+  <button class="musica" onclick="toggleMusica()">🎵 Tocar / Pausar Música</button>
 
   <div class="mensagem">Cada momento com você é mágico ✨💖</div>
   <footer>Feito com ❤️ por Daniel</footer>
@@ -238,6 +240,7 @@
     function abrirCaixinha(el) {
       const surpresa = el.querySelector('.surpresa');
       surpresa.style.display = (surpresa.style.display==='block')?'none':'block';
+      tocarSom();
     }
 
     // Galeria modal
@@ -249,8 +252,15 @@
     modal.onclick = ()=>{ modal.style.display='none'; }
 
     // Música
-    function tocarMusica() {
-      window.open("https://drive.google.com/uc?export=download&id=1-8pSisP9rGW7KYl8aHbdgttU2He8bbX4", "_blank");
+    const audio = document.getElementById('musica');
+    function toggleMusica() {
+      if(audio.paused){ audio.play(); } else { audio.pause(); }
+    }
+
+    // Som opcional ao abrir cartão ou caixinha
+    function tocarSom() {
+      const som = new Audio('https://www.soundjay.com/button/beep-07.wav');
+      som.play();
     }
   </script>
 </body>
