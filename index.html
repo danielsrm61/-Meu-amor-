@@ -22,33 +22,11 @@
       position: relative;
     }
 
-    h1 {
-      font-size: 3rem;
-      margin-top: 20px;
-      text-shadow: 2px 2px 5px #d6336c;
-    }
+    h1 { font-size: 3rem; margin-top: 20px; text-shadow: 2px 2px 5px #d6336c; }
 
-    /* Contadores */
-    .contador-container {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-      margin: 30px 0;
-    }
-
-    .contador {
-      background: rgba(255, 255, 255, 0.2);
-      padding: 20px 30px;
-      border-radius: 25px;
-      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-      min-width: 220px;
-      transition: transform 0.3s;
-      cursor: default;
-    }
-
+    .contador-container { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin: 30px 0; }
+    .contador { background: rgba(255, 255, 255, 0.2); padding: 20px 30px; border-radius: 25px; box-shadow: 0 8px 15px rgba(0,0,0,0.2); min-width: 220px; transition: transform 0.3s; cursor: default; }
     .contador:hover { transform: scale(1.05); }
-
     .contador h2 { font-size: 1.4rem; margin-bottom: 15px; text-shadow: 1px 1px 3px #d6336c; }
     .contador p { font-size: 1.1rem; margin: 5px 0; }
 
@@ -56,49 +34,15 @@
     footer { margin-top: 30px; font-size: 0.9rem; opacity: 0.8; }
 
     /* Corações flutuantes */
-    .heart {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background-color: #ff4d6d;
-      transform: rotate(45deg);
-      animation: float 6s linear infinite;
-      opacity: 0.8;
-    }
-
-    .heart::before, .heart::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background-color: #ff4d6d;
-      border-radius: 50%;
-    }
-
+    .heart { position: absolute; width: 20px; height: 20px; background-color: #ff4d6d; transform: rotate(45deg); animation: float 6s linear infinite; opacity: 0.8; }
+    .heart::before, .heart::after { content: ''; position: absolute; width: 20px; height: 20px; background-color: #ff4d6d; border-radius: 50%; }
     .heart::before { top: -10px; left: 0; }
     .heart::after { left: 10px; top: 0; }
-
-    @keyframes float {
-      0% { transform: translateY(0) rotate(45deg); opacity: 0.8; }
-      50% { opacity: 0.4; }
-      100% { transform: translateY(-800px) rotate(45deg); opacity: 0; }
-    }
+    @keyframes float { 0% { transform: translateY(0) rotate(45deg); opacity: 0.8; } 50% { opacity: 0.4; } 100% { transform: translateY(-800px) rotate(45deg); opacity: 0; } }
 
     /* Confete */
-    .confete {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background-color: #fff;
-      opacity: 0.8;
-      animation: confete-fall linear infinite;
-      border-radius: 50%;
-    }
-
-    @keyframes confete-fall {
-      0% { transform: translateY(-10px) rotate(0deg); }
-      100% { transform: translateY(100vh) rotate(360deg); }
-    }
+    .confete { position: absolute; width: 10px; height: 10px; background-color: #fff; opacity: 0.8; animation: confete-fall linear infinite; border-radius: 50%; }
+    @keyframes confete-fall { 0% { transform: translateY(-10px) rotate(0deg); } 100% { transform: translateY(100vh) rotate(360deg); } }
 
     /* Cartão interativo */
     .cartao { width: 250px; height: 150px; background: rgba(255,255,255,0.2); border-radius: 20px; margin: 20px; cursor: pointer; perspective: 1000px; }
@@ -175,7 +119,7 @@
   </div>
 
   <!-- Música -->
-  <audio id="musica" src="https://drive.google.com/uc?export=download&id=1-8pSisP9rGW7KYl8aHbdgttU2He8bbX4" preload="auto"></audio>
+  <audio id="musica" src="https://raw.githubusercontent.com/danielsrm61/Supresaa/main/musica.mp3" preload="auto"></audio>
   <button class="musica" onclick="toggleMusica()">🎵 Tocar / Pausar Música</button>
 
   <div class="mensagem">Cada momento com você é mágico ✨💖</div>
@@ -253,9 +197,7 @@
 
     // Música
     const audio = document.getElementById('musica');
-    function toggleMusica() {
-      if(audio.paused){ audio.play(); } else { audio.pause(); }
-    }
+    function toggleMusica() { if(audio.paused){ audio.play(); } else { audio.pause(); } }
 
     // Som opcional ao abrir cartão ou caixinha
     function tocarSom() {
@@ -264,4 +206,4 @@
     }
   </script>
 </body>
-</html>
+</html￼Enter
