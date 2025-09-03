@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nosso Amor Animado 💖</title>
+  <title>Supresaa - Meu Amor por Você</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
@@ -11,27 +11,113 @@
       font-family: 'Montserrat', sans-serif;
       margin: 0;
       padding: 0;
-      background: linear-gradient(120deg, #ff9a9e, #fad0c4);
-      color: #fff;
-      text-align: center;
-      min-height: 100vh;
       overflow-x: hidden;
+    }
+
+    /* Tela Inicial */
+    #landing {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
+      text-align: center;
+      color: white;
+    }
+
+    .slideshow img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .landing-text {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+      background: rgba(0,0,0,0.4);
+      border-radius: 10px;
+    }
+
+    #landing button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      margin-top: 20px;
+      background-color: #ff4081;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #landing button:hover {
+      background-color: #e0356e;
+    }
+
+    /* Página principal */
+    #main {
+      display: none;
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+      min-height: 100vh;
       position: relative;
     }
 
-    h1 { font-size: 3rem; margin-top: 20px; text-shadow: 2px 2px 5px #d6336c; }
+    h1 { font-size: 2.5rem; margin-bottom: 20px; color: #fff; text-shadow: 2px 2px 5px #d6336c; }
+    h2 { color: #fff; text-shadow: 1px 1px 3px #d6336c; }
 
+    /* Contadores */
     .contador-container { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin: 30px 0; }
-    .contador { background: rgba(255, 255, 255, 0.2); padding: 20px 30px; border-radius: 25px; box-shadow: 0 8px 15px rgba(0,0,0,0.2); min-width: 220px; transition: transform 0.3s; cursor: default; }
-    .contador:hover { transform: scale(1.05); }
-    .contador h2 { font-size: 1.4rem; margin-bottom: 15px; text-shadow: 1px 1px 3px #d6336c; }
+    .contador { background: rgba(255, 255, 255, 0.2); padding: 20px 30px; border-radius: 25px; min-width: 220px; box-shadow: 0 8px 15px rgba(0,0,0,0.2); cursor: default; }
+    .contador h2 { font-size: 1.4rem; margin-bottom: 15px; }
     .contador p { font-size: 1.1rem; margin: 5px 0; }
 
     .mensagem { font-size: 1.5rem; margin: 20px 0; text-shadow: 1px 1px 4px #d6336c; }
+
     footer { margin-top: 30px; font-size: 0.9rem; opacity: 0.8; }
+
+    /* Cartão interativo */
+    .cartao { width: 250px; height: 150px; background: rgba(255,255,255,0.2); border-radius: 20px; margin: 20px auto; cursor: pointer; perspective: 1000px; }
+    .cartao-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s; transform-style: preserve-3d; }
+    .cartao:hover .cartao-inner { transform: rotateY(180deg); }
+    .cartao-front, .cartao-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; display: flex; justify-content: center; align-items: center; font-size: 1.2rem; padding: 10px; }
+    .cartao-front { background: rgba(255,255,255,0.2); }
+    .cartao-back { background: rgba(255,255,255,0.4); transform: rotateY(180deg); }
+
+    /* Mini-caixinha surpresa */
+    .caixinha { width: 120px; height: 120px; background: rgba(255,255,255,0.2); border-radius: 15px; display: flex; justify-content: center; align-items: center; cursor: pointer; margin: 20px auto; position: relative; transition: transform 0.3s; }
+    .caixinha:hover { transform: scale(1.1); }
+    .caixinha .surpresa { display: none; position: absolute; top: -50px; width: 220px; background: rgba(255,255,255,0.3); border-radius: 15px; padding: 10px; }
+
+    /* Galeria */
+    .galeria { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin: 20px 0; }
+    .galeria img { width: 120px; border-radius: 15px; cursor: pointer; transition: transform 0.3s; }
+    .galeria img:hover { transform: scale(1.1); }
+
+    /* Modal */
+    .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; }
+    .modal img { max-width: 90%; max-height: 90%; border-radius: 20px; }
+
+    /* Spotify player */
+    .spotify-player { margin: 20px auto; }
+    .spotify-player iframe { border-radius: 5px; }
+
+    /* Vídeo */
+    .video-container { margin: 20px auto; }
+    .video-container iframe { width: 100%; max-width: 560px; height: 315px; border: none; border-radius: 10px; }
 
     /* Corações flutuantes */
     .heart { position: absolute; width: 20px; height: 20px; background-color: #ff4d6d; transform: rotate(45deg); animation: float 6s linear infinite; opacity: 0.8; }
@@ -44,162 +130,16 @@
     .confete { position: absolute; width: 10px; height: 10px; background-color: #fff; opacity: 0.8; animation: confete-fall linear infinite; border-radius: 50%; }
     @keyframes confete-fall { 0% { transform: translateY(-10px) rotate(0deg); } 100% { transform: translateY(100vh) rotate(360deg); } }
 
-    /* Cartão interativo */
-    .cartao { width: 250px; height: 150px; background: rgba(255,255,255,0.2); border-radius: 20px; margin: 20px; cursor: pointer; perspective: 1000px; }
-    .cartao-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s; transform-style: preserve-3d; }
-    .cartao:hover .cartao-inner { transform: rotateY(180deg); }
-    .cartao-front, .cartao-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; display: flex; justify-content: center; align-items: center; font-size: 1.2rem; padding: 10px; }
-    .cartao-front { background: rgba(255,255,255,0.2); }
-    .cartao-back { background: rgba(255,255,255,0.4); transform: rotateY(180deg); }
-
-    /* Mini-caixinha surpresa */
-    .caixinha { width: 120px; height: 120px; background: rgba(255,255,255,0.2); border-radius: 15px; display: flex; justify-content: center; align-items: center; cursor: pointer; margin: 20px; position: relative; transition: transform 0.3s; }
-    .caixinha:hover { transform: scale(1.1); }
-    .caixinha .surpresa { display: none; position: absolute; top: -50px; width: 200px; background: rgba(255,255,255,0.3); border-radius: 15px; padding: 10px; }
-
-    /* Galeria */
-    .galeria { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin: 20px 0; }
-    .galeria img { width: 120px; border-radius: 15px; cursor: pointer; transition: transform 0.3s; }
-    .galeria img:hover { transform: scale(1.1); }
-
-    /* Modal */
-    .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; }
-    .modal img { max-width: 90%; max-height: 90%; border-radius: 20px; }
-
-    /* Spotify player centralizado */
-    .spotify-player { margin: 20px; }
   </style>
 </head>
 <body>
-  <h1>🌹 Nosso Amor Animado 💖</h1>
 
-  <!-- Contadores -->
-  <div class="contador-container">
-    <div class="contador">
-      <h2>💋 Desde nosso primeiro beijo</h2>
-      <p id="beijo-meses">0 meses</p>
-      <p id="beijo-dias">0 dias</p>
-      <p id="beijo-horas">0 horas</p>
-      <p id="beijo-minutos">0 minutos</p>
-    </div>
-    <div class="contador">
-      <h2>💍 Desde que começamos a namorar</h2>
-      <p id="namoro-meses">0 meses</p>
-      <p id="namoro-dias">0 dias</p>
-      <p id="namoro-horas">0 horas</p>
-      <p id="namoro-minutos">0 minutos</p>
-    </div>
+<!-- Tela Inicial -->
+<div id="landing">
+  <div class="slideshow">
+    <img src="https://raw.githubusercontent.com/danielsrm61/Supresaa/refs/heads/main/IMG-20250717-WA0028.jpg" class="slide" />
+    <img src="https://raw.githubusercontent.com/danielsrm61/Supresaa/refs/heads/main/IMG-20250613-WA0046.jpg" class="slide" />
+    <img src="https://raw.githubusercontent.com/danielsrm61/Supresaa/refs/heads/main/IMG-20250613-WA0003.jpg" class="slide" />
   </div>
-
-  <!-- Cartão interativo -->
-  <div class="cartao" onclick="tocarSom()">
-    <div class="cartao-inner">
-      <div class="cartao-front">Clique para abrir 💌</div>
-      <div class="cartao-back">Te amo muito! 💖🌹</div>
-    </div>
-  </div>
-
-  <!-- Mini-caixinha surpresa -->
-  <div class="caixinha" onclick="abrirCaixinha(this)">
-    Clique na caixinha 🎁
-    <div class="surpresa">Surpresa! 🌟 Você é incrível! 😍</div>
-  </div>
-
-  <!-- Galeria de fotos -->
-  <div class="galeria">
-    <img src="https://raw.githubusercontent.com/danielsrm61/Supresaa/refs/heads/main/IMG-20250717-WA0028.jpg" alt="Foto 1">
-    <img src="https://raw.githubusercontent.com/danielsrm61/Supresaa/refs/heads/main/IMG-20250613-WA0046.jpg" alt="Foto 2">
-    <img src="https://raw.githubusercontent.com/danielsrm61/Supresaa/refs/heads/main/IMG-20250613-WA0003.jpg" alt="Foto 3">
-  </div>
-
-  <!-- Modal -->
-  <div class="modal" id="modal">
-    <img id="modal-img" src="">
-  </div>
-
-  <!-- Spotify Player -->
-  <div class="spotify-player">
-    <iframe src="https://open.spotify.com/embed/track/2xOa2qPj8kDnlj8Nr1D07s?utm_source=oembed" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-  </div>
-
-  <div class="mensagem">Cada momento com você é mágico ✨💖</div>
-  <footer>Feito com ❤️ por Daniel</footer>
-
-  <script>
-    // Contadores
-    function calcularTempo(dataInicial) {
-      const agora = new Date();
-      const diff = agora - new Date(dataInicial);
-      const minutos = Math.floor(diff/60000)%60;
-      const horas = Math.floor(diff/(1000*60*60))%24;
-      const diasTotais = Math.floor(diff/(1000*60*60*24));
-      const meses = Math.floor(diasTotais/30);
-      const dias = diasTotais%30;
-      return { meses, dias, horas, minutos };
-    }
-    function atualizarContadores() {
-      const beijo = calcularTempo('2025-05-03T00:00:00');
-      document.getElementById('beijo-meses').textContent = `${beijo.meses} meses`;
-      document.getElementById('beijo-dias').textContent = `${beijo.dias} dias`;
-      document.getElementById('beijo-horas').textContent = `${beijo.horas} horas`;
-      document.getElementById('beijo-minutos').textContent = `${beijo.minutos} minutos`;
-
-      const namoro = calcularTempo('2025-06-12T00:00:00');
-      document.getElementById('namoro-meses').textContent = `${namoro.meses} meses`;
-      document.getElementById('namoro-dias').textContent = `${namoro.dias} dias`;
-      document.getElementById('namoro-horas').textContent = `${namoro.horas} horas`;
-      document.getElementById('namoro-minutos').textContent = `${namoro.minutos} minutos`;
-    }
-    setInterval(atualizarContadores, 60000);
-    atualizarContadores();
-
-    // Corações flutuantes
-    function criarCoracao() {
-      const heart = document.createElement('div');
-      heart.classList.add('heart');
-      heart.style.left = Math.random()*window.innerWidth+'px';
-      heart.style.width = 20+Math.random()*20+'px';
-      heart.style.height = heart.style.width;
-      heart.style.animationDuration = 4+Math.random()*4+'s';
-      document.body.appendChild(heart);
-      setTimeout(()=>heart.remove(),8000);
-    }
-    setInterval(criarCoracao, 300);
-
-    // Confete
-    function criarConfete() {
-      const conf = document.createElement('div');
-      conf.classList.add('confete');
-      conf.style.left = Math.random()*window.innerWidth+'px';
-      conf.style.backgroundColor = `hsl(${Math.random()*360}, 100%, 80%)`;
-      conf.style.width = 5+Math.random()*10+'px';
-      conf.style.height = conf.style.width;
-      conf.style.animationDuration = 3+Math.random()*3+'s';
-      document.body.appendChild(conf);
-      setTimeout(()=>conf.remove(),6000);
-    }
-    setInterval(criarConfete, 200);
-
-    // Mini-caixinha surpresa
-    function abrirCaixinha(el) {
-      const surpresa = el.querySelector('.surpresa');
-      surpresa.style.display = (surpresa.style.display==='block')?'none':'block';
-      tocarSom();
-    }
-
-    // Galeria modal
-    const modal = document.getElementById('modal');
-    const modalImg = document.getElementById('modal-img');
-    document.querySelectorAll('.galeria img').forEach(img=>{
-      img.onclick = ()=>{ modal.style.display='flex'; modalImg.src=img.src; }
-    });
-    modal.onclick = ()=>{ modal.style.display='none'; }
-
-    // Som opcional ao abrir cartão ou caixinha
-    function tocarSom() {
-      const som = new Audio('https://www.soundjay.com/button/beep-07.wav');
-      som.play();
-    }
-  </script>
-</body>
-</html>
+  <div class="landing-text">
+    <h1>Amor, cada
